@@ -80,5 +80,5 @@ foreach(number_2_digits($number) as $digit)
 {
     echo number_2_numeral($digit).' ';
 }
-//test
+
 ?>
