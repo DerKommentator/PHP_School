@@ -51,10 +51,14 @@ function mittelwert($array)
 
 function maximum($array)
 {
-    $max_element = 0;
+    $max_element = NULL;
     foreach($array as $element)
     {
-        if($element > $max_element)
+        if($max_element === NULL)
+        {
+            $max_element = $element;
+        }
+        elseif($element > $max_element)
         {
             $max_element = $element;
         }
@@ -64,10 +68,14 @@ function maximum($array)
 
 function minimum($array)
 {
-    $min_element = 0;
+    $min_element = NULL;
     foreach($array as $element)
     {
-        if($element < $min_element)
+        if($min_element === NULL)
+        {
+            $min_element = $element;
+        }
+        elseif($element < $min_element)
         {
             $min_element = $element;
         }
