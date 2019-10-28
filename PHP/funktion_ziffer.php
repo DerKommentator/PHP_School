@@ -11,7 +11,7 @@ function number_2_numeral($number)
     {
         return $pos_numerals[$number-1]; # count -1 because pos_numerals doesn't contains 'Null'
     }
-    elseif($number < 0)
+    elseif($number < 0 || is_string($number) == 0)
     {
         $number = $number * -1;
         return $neg_numerals[$number];
@@ -44,7 +44,7 @@ function number_2_digits($number)
 
 }
 
-$number = -545;
+$number = 0;
 
 echo $number.' als Wort: ';
 foreach(number_2_digits($number) as $digit)
