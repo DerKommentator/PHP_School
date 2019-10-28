@@ -2,24 +2,30 @@
 
 function number_2_numeral($number)
 {
-    $pos_numerals = ['Eins', 'Zwei', 'Drei', 'Vier',
+    $sign = '';
+    $output_string = '';
+    $pos_numerals = ['Null', 'Eins', 'Zwei', 'Drei', 'Vier',
                      'Fünf', 'Sechs', 'Sieben', 'Acht', 'Neun'];
-    $neg_numerals = ['Null', 'minus Eins', 'minus Zwei', 'minus Drei',
-                     'minus Vier', 'minus Fünf', 'minus Sechs',
-                     'minus Sieben', 'minus Acht', 'minus Neun'];
-    if($number > 0)
+    if($number < 0)
     {
-        return $pos_numerals[$number-1]; # count -1 because pos_numerals doesn't contains 'Null'
+        $sign = 'minus ';
+        $number = -$number;
     }
-    elseif($number < 0 || is_string($number) == 0)
+
+    $number = number_2_digits($number);
+    foreach($number as $digit)
     {
-        $number = $number * -1;
-        return $neg_numerals[$number];
+        if($digit > 0 || $digit == 0)
+        {
+            $output_string = $pos_numerals[$digit].' '.$output_string;
+        }
+        else
+        {
+            $output_string = 'Not a digit';
+        }
     }
-    else
-    {
-        return 'Not a number';
-    }
+
+    return $sign.$output_string;
 }
 
 
@@ -33,8 +39,11 @@ function number_2_digits($number)
     		array_push($output_array, $number % 10);
     		$number = $number / 10;
     	}
-        $output_array = array_reverse($output_array);
     	return $output_array;
+    }
+    elseif($number > 9 || $number < 0)
+    {
+        return 'Not a digit';
     }
     else
     {
@@ -44,12 +53,13 @@ function number_2_digits($number)
 
 }
 
-$number = 0;
+$number = -54;
+echo $number.' als Wort: '.number_2_numeral($number).'<br>';
 
-echo $number.' als Wort: ';
-foreach(number_2_digits($number) as $digit)
-{
-    echo number_2_numeral($digit).' ';
-}
+$number = -240;
+echo $number.' als Wort: '.number_2_numeral($number).'<br>';
+
+$number = 159;
+echo $number.' als Wort: '.number_2_numeral($number).'<br>';
 
 ?>
