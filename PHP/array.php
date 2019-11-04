@@ -41,24 +41,15 @@ function summe($array)
 
 function mittelwert($array)
 {
-    $mittelwert = 0;
-    foreach($array as $element)
-    {
-        $mittelwert = summe($array) / count($array);
-    }
-    return $mittelwert;
+    return summe($array) / count($array);
 }
 
 function maximum($array)
 {
-    $max_element = NULL;
+    $max_element = array_shift($array);
     foreach($array as $element)
     {
-        if($max_element === NULL)
-        {
-            $max_element = $element;
-        }
-        elseif($element > $max_element)
+        if($element > $max_element)
         {
             $max_element = $element;
         }
@@ -68,14 +59,10 @@ function maximum($array)
 
 function minimum($array)
 {
-    $min_element = NULL;
+    $min_element = array_shift($array);
     foreach($array as $element)
     {
-        if($min_element === NULL)
-        {
-            $min_element = $element;
-        }
-        elseif($element < $min_element)
+        if($element < $min_element)
         {
             $min_element = $element;
         }
