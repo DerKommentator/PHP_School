@@ -32,7 +32,7 @@ function number_2_numeral($number)
 function number_2_digits($number)
 {
 	$output_array = [];
-    if($number != 0)
+    if($number < 9 || $number > 0)
     {
         while($number <= -1 || $number >= 1)
     	{
@@ -49,12 +49,13 @@ function number_2_digits($number)
     {
         return [$number];
     }
-    #print_r($output_array);
+    print_r($output_array);
 
 }
 
-$number = -54;
+$number = -10;
 echo $number.' als Wort: '.number_2_numeral($number).'<br>';
+#print_r(number_2_digits($number));
 
 $number = -240;
 echo $number.' als Wort: '.number_2_numeral($number).'<br>';

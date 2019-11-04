@@ -2,9 +2,15 @@
 
 function dez2($number, $base_output, $template_bits = 0)
 {
+	$sign = '';
 	$output_array = [];
-	while($number >= 1)
+	while($number >= 1 || $number <= -1)
 	{
+		if($number < 0)
+		{
+			$number = $number * -1;
+			$sign = '-';
+		}
 		array_push($output_array, $number % $base_output);
 
 		$number = $number / $base_output;
@@ -13,15 +19,17 @@ function dez2($number, $base_output, $template_bits = 0)
 	if($base_output == 2)
 	{
 		$template_bits = $template_bits - count($output_array);
-		for($i=1; $i <= $template_bits; $i+=1)
+		for($i=0; $i <= $template_bits; $i+=1)
 		{
 			array_push($output_array, '0');
 		}
 	}
+
 	$output_array = array_reverse($output_array);
+	#print_r($output_array);
 	$output_string = implode('', $output_array);
 
-	return $output_string;
+	return $sign.$output_string.'<sub>'.$base_output.'</sub>';
 }
 
 
@@ -44,25 +52,23 @@ function _2dez($number, $base_input)
 # 2dez($number, $base_input)
 
 
-echo dez2(190, 5);
+#echo dez2(190, 5);
+#echo '<br><br>';
 
-echo '<br><br>';
+#echo _2dez(1230, 5);
+#echo '<br><br>';
 
-echo _2dez(1230, 5);
+#echo _2dez('10101', 2);
+#echo '<br><br>';
 
-echo '<br><br>';
+$count_from = -10;
+$count_to = 14;
 
-echo _2dez('10101', 2);
-
-echo '<br><br>';
-
-echo dez2(15, 2, 8);
-
-echo '<br><br>';
-
-//echo dez2bin(15, 8);
-
-
+for($i=$count_from; $i <= $count_to; $i-=-1)
+{
+	echo $i.'<sub>10</sub> in Binär umgerechnet ergibt: '.dez2($i, 2, 8);
+	echo '<br>';
+}
 
 
 
