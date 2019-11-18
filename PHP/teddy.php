@@ -1,4 +1,5 @@
 <?php
+
 	header ("Content-type: image/png");
 	$img=imagecreatetruecolor(600,600);
 
@@ -110,4 +111,17 @@
 
 	imagepng($img);
 	imagegestroy($img);
+
+
+	echo '<br>';
+	echo 'HALLO';
+
+	if(true == "foobar")
+	{
+		echo 'lolll';
+	}
+	else {
+		echo 'no';
+	}
+
 ?>
