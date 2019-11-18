@@ -3,40 +3,42 @@
 $hoehe = 30;
 
 echo '<pre>';
-for($i=1; $i <= $hoehe; $i+=1)
+function male($zeichen, $anzahl, $br=false)
 {
-    for($j=1; $j <= $hoehe - $i; $j+=1)
+    for($i=1;$i<=$anzahl;$i+=1)
     {
-        echo ' ';
-    }
-    if($i != 1)
-    {
-        echo 'x';
+        echo $zeichen;
     }
 
-    for($j=1; $j <= ($i-1)*2 -1; $j+=1)
+    if($br != false)
     {
-        echo ' ';
+        echo '<br>';
     }
-    echo 'x';
-    echo '<br>';
+}
+
+
+for($i=1; $i <= $hoehe; $i+=1)
+{
+    male(' ', $hoehe - $i);
+
+    if($i != 1)
+    {
+        male('x', 1);
+    }
+
+    male(' ', ($i - 1) * 2 -1);
+    male('x', 1, 1);
 }
 for($i=1; $i <= $hoehe-1; $i+=1)
 {
-    for($j=1; $j <= $i; $j+=1)
-    {
-        echo ' ';
-    }
-    echo 'x';
-    for($j=1; $j <= $hoehe*2 - $i*2 -3; $j+=1)
-    {
-        echo ' ';
-    }
+    male(' ', $i);
+    male('x', 1);
+    male(' ', $hoehe*2 - $i*2 -3);
     if($i != $hoehe-1)
     {
-        echo 'x';
+        male('x', 1, 1);
     }
-    echo '<br>';
+    //echo '<br>';
 }
 
 
