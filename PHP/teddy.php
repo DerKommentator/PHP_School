@@ -10,6 +10,8 @@
 	$green=imagecolorallocate($img, 0, 255, 0);
 	$blue=imagecolorallocate($img, 50, 50, 255);
 	$yellow=imagecolorallocate($img, 255, 255, 0);
+	$darkbrown=imagecolorallocate($img, 107, 68, 60);
+	$darkgreen=imagecolorallocate($img, 0, 150, 0);
 
 	//imagefilledrectange(x, y, x2, y2)
 	//imagefilledellipse(x, y, length, width)
@@ -25,10 +27,18 @@
 	$sunbeam2 = [430, 100, 560, 30, 560, 60, 580, 60];
 	$sunbeam3 = [430, 150, 560, 30, 560, 60, 580, 60];
 	$sunbeam4 = [430, 220, 560, 30, 560, 60, 580, 60];
+	$sunbeam5 = [530, 220, 560, 30, 560, 60, 580, 60];
 	imagefilledpolygon($img, $sunbeam1, 4, $yellow);
 	imagefilledpolygon($img, $sunbeam2, 4, $yellow);
 	imagefilledpolygon($img, $sunbeam3, 4, $yellow);
 	imagefilledpolygon($img, $sunbeam4, 4, $yellow);
+	imagefilledpolygon($img, $sunbeam5, 4, $yellow);
+
+	//tree
+	imagefilledrectangle($img, 20, 380, 200, 420, $darkbrown);
+	imagefilledrectangle($img, 70, 100, 150, 400, $darkbrown);
+	imagefilledellipse($img, 110, 100, 300, 300, $darkgreen);
+
 
 	//arme
 	imagefilledellipse($img, 130, 320, 185, 75, $black);
@@ -89,6 +99,14 @@
 	imagefilledellipse($img, 300, 180, 40, 30, $black);
 	//----nase\
 	//kopf\
+
+	//jail
+	imagefilledrectangle($img, 20, 20, 580, 40, $black);
+	for($i=0; $i <= 580; $i+=1)
+	{
+		imagefilledrectangle($img, 20+$i*90, 20, 40+$i*90, 580, $black);
+	}
+	imagefilledrectangle($img, 20, 580, 580, 600, $black);
 
 	imagepng($img);
 	imagegestroy($img);
