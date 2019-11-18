@@ -46,7 +46,7 @@ function buchstaben($buchstabe, $hoehe=10, $abstand = 3)
     {
         foreach($buchstabe as $element)
         {
-            if($element == 'H')
+            if($element == 'H') ################-----H------####################
             {
                 male('x', 1);
                 if($i == round($hoehe/2))
@@ -62,7 +62,7 @@ function buchstaben($buchstabe, $hoehe=10, $abstand = 3)
 
                 male(' ', $abstand);
             }
-            elseif($element == 'A')
+            elseif($element == 'A')################-----A------#################
             {
                 male(' ', $hoehe - $i);
 
@@ -86,7 +86,7 @@ function buchstaben($buchstabe, $hoehe=10, $abstand = 3)
 
                 male(' ', $abstand);
             }
-            elseif ($element == 'L')
+            elseif ($element == 'L')################-----L------################
             {
                 male('x', 1);
 
@@ -100,7 +100,7 @@ function buchstaben($buchstabe, $hoehe=10, $abstand = 3)
                 }
                 male(' ', $abstand);
             }
-            elseif ($element == 'O')
+            elseif ($element == 'O')################-----O------################
             {
                 if($i == 1 || $i == $hoehe)
                 {
