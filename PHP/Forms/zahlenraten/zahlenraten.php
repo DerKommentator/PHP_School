@@ -33,7 +33,7 @@
 							echo '<input type="submit" name="restart" value="Neues Spiel">';
 						echo '</form>';
 
-						if(isset($_POST['inputValue']) && is_numeric($_POST['inputValue']))
+						if(isset($_POST['submit']) && is_numeric($_POST['inputValue']))
 						{
 							$_POST['tries']++;
 						}
