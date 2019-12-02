@@ -22,57 +22,51 @@
 
 						if(!$_POST)
 						{
-							$_POST['Geheim']= rand(1, 100);
-							//$_POST['Geheim']= 33;
-							$_POST['eWert']= '';
-							$_POST['versuche']=0;
+							$_POST['randomNumber']= rand(1, 100);
+							//$_POST['randomNumber']= 33;
+							$_POST['inputValue']= '';
+							$_POST['tries']=0;
 						}
-
-						if(isset($_POST['eWert']) && is_numeric($_POST['eWert']))
-						{
-							$_POST['versuche']++;
-						}
-
 
 
 						echo '<form action="zahlenraten.php" method="link">';
 							echo '<input type="submit" name="restart" value="Neues Spiel">';
 						echo '</form>';
 
+						if(isset($_POST['inputValue']) && is_numeric($_POST['inputValue']))
+						{
+							$_POST['tries']++;
+						}
 
 
 						echo '<form method="post">';
-							echo '<input type="hidden" name="Geheim" value="'.$_POST['Geheim'].'">';
+							echo '<input type="text" name="inputValue" value="'.$_POST['inputValue'].'">';
+							echo '<input type="submit" name="submit" value="Tippen"><br>';
 
-
-							echo '<input type="text" name="eWert" value="'.$_POST['eWert'].'">';
-							echo ' ';
-							echo '<input type="submit" name="tippen" value="Tippen"><br>';
-
-							echo '<input type="hidden" name="versuche" value="'.$_POST['versuche'].'">';
+							echo '<input type="hidden" name="randomNumber" value="'.$_POST['randomNumber'].'">';
+							echo '<input type="hidden" name="tries" value="'.$_POST['tries'].'">';
 						echo '</form>';
 
-
-
-
-
-						if(isset($_POST['eWert']) && is_numeric($_POST['eWert']))
+						if(isset($_POST['submit']) && is_numeric($_POST['inputValue']))
 						{
-							if($_POST['Geheim'] < $_POST['eWert'])
+							if($_POST['randomNumber'] < $_POST['inputValue'])
 							{
-								echo $_POST['eWert'].' ist zu hoch'.'<br>';
+								echo $_POST['inputValue'].' ist zu hoch'.'<br>';
 							}
-							elseif($_POST['Geheim'] > $_POST['eWert'])
+							elseif($_POST['randomNumber'] > $_POST['inputValue'])
 							{
-								echo $_POST['eWert'].' ist zu niedrig'.'<br>';
+								echo $_POST['inputValue'].' ist zu niedrig'.'<br>';
 							}
 
-							elseif($_POST['Geheim'] == $_POST['eWert'])
+							elseif($_POST['randomNumber'] == $_POST['inputValue'])
 							{
-								echo $_POST['eWert'].' ist der richtige Wert'.'<br>';
-								echo 'Du hast '.$_POST['versuche'].' Versuch(e) gebraucht';
+								echo $_POST['inputValue'].' ist der richtige Wert'.'<br>';
+								echo 'Du hast '.$_POST['tries'].' Versuch(e) gebraucht<br><br>';
+
+								echo '<img src="feuerwerk.gif" alt="Feuerwerk">';
 							}
 						}
+
 						?>
 			</div>
 		</div>
