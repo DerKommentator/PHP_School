@@ -29,15 +29,14 @@
 						}
 
 
-						echo '<form action="zahlenraten.php" method="link">';
+						echo '<form action="zahlenraten.php" method="get">';
 							echo '<input type="submit" name="restart" value="Neues Spiel">';
 						echo '</form>';
 
-						if(isset($_POST['submit']) && is_numeric($_POST['inputValue']))
+						if(isset($_POST['submit']) && is_numeric($_POST['inputValue']) && $_POST['inputValue'] < 100 && $_POST['inputValue'] > 1)
 						{
 							$_POST['tries']++;
 						}
-
 
 						echo '<form method="post">';
 							echo '<input type="text" name="inputValue" value="'.$_POST['inputValue'].'">';
@@ -47,7 +46,7 @@
 							echo '<input type="hidden" name="tries" value="'.$_POST['tries'].'">';
 						echo '</form>';
 
-						if(isset($_POST['submit']) && is_numeric($_POST['inputValue']))
+						if(isset($_POST['submit']) && is_numeric($_POST['inputValue']) && $_POST['inputValue'] < 100 && $_POST['inputValue'] > 1)
 						{
 							if($_POST['randomNumber'] < $_POST['inputValue'])
 							{
