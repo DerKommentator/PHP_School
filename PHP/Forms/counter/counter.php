@@ -25,14 +25,16 @@
             echo '<div id="counter">';
 
             echo '<form method="post">';
-            echo '<input class="counterField" type="text" name="counter" value="'.$_POST['counter'].'"><br>';
+            echo '<table border=0';
+            echo '<tr><td colspan="2"><input readonly class="counterField" type="text" name="counter" value="'.$_POST['counter'].'"></td></tr>';
 
-            echo '<input class="changeValue" type="submit" name="plus" value="+">';
-            echo '<input class="changeValue" type="submit" name="minus" value="-"><br>';
+            echo '<tr><td width="50%"><input class="changeValue" type="submit" name="plus" value="+"></td>';
+            echo '<td width="50%"><input class="changeValue" type="submit" name="minus" value="-"></td></tr>';
 
-            echo '<input class="resetValue" type="submit" name="reset" value="Reset">';
+            echo '<tr><td colspan="2"><input class="resetValue" type="submit" name="reset" value="Reset"></td></tr>';
+            echo '</table>';
             echo '</form>';
-            
+
             echo '</div>';
 
         ?>
