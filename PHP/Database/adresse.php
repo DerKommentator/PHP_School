@@ -1,5 +1,5 @@
 <?php //adresse.php
-#print_r($_GET);
+
 
 include('connect.php');
 
